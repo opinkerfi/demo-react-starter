@@ -1,6 +1,6 @@
 apiVersion: 1.0.0
 metadata:
-  name: demo-react-starter
+  name: demo-react-starter-
 projects:
   - name: demo-react-starter
     source:
