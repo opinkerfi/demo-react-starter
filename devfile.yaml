@@ -1,0 +1,35 @@
+apiVersion: 1.0.0
+metadata:
+  name: demo-react-starter
+projects:
+  - name: demo-react-starter
+    source:
+      location: 'https://github.com/opinkerfi/demo-react-starter.git'
+      type: git
+      branch: master
+components:
+  - id: che-incubator/typescript/latest
+    type: chePlugin
+  - mountSources: true
+    endpoints:
+      - name: nodejs
+        port: 4100
+    memoryLimit: 512Mi
+    type: dockerimage
+    image: 'quay.io/eclipse/che-nodejs8-centos@sha256:73fae82cd3900bf8085485fc7830ab0465f25bb3a0947007eb69ce1c4cc82ba2'
+    alias: nodejs
+  - id: vscode/typescript-language-features/latest
+    type: chePlugin
+commands:
+  - name: install all required dependencies
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/demo-react-starter'
+        type: exec
+        command: npm install
+        component: nodejs
+  - name: start the local server
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/demo-react-starter'
+        type: exec
+        command: npm start
+        component: nodejs
