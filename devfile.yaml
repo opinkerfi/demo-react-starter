@@ -6,7 +6,7 @@ projects:
     source:
       location: 'https://github.com/opinkerfi/demo-react-starter.git'
       type: git
-      branch: master
+      branch: main
 components:
   - id: che-incubator/typescript/latest
     type: chePlugin
